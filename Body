@@ -1,0 +1,48 @@
+using namespace std;
+
+Student:: Student()
+{
+	username = NULL;
+}
+
+Student::Student(int id , char *pname)
+{
+	this->id = id;
+	this->username = pname;
+}
+
+Student::~Student()
+{
+	delete username;
+}
+
+Student::Student(const Student &s)
+{
+	this->id = s.id;
+	if(s.username != NULL)
+	{
+		username = new char[strlen(s.username) + 1];
+		if(username!=NULL)
+			strcpy(username, s.username);
+	}
+	else
+		username = NULL;
+}
+
+Student& Student::operator = (const Student &s)
+{
+	if(this == &s)
+		return *this;
+	if (username != NULL)
+		delete username;
+	this->id = s.id;
+	if (s.username != NULL)
+	{
+		username = new char[strlen(s.username) + 1];
+		if(username != NULL)
+			strcpy(username, s.username);
+	}
+	else
+		username = NULL;
+	return *this;
+}
