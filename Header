@@ -1,0 +1,12 @@
+class Student
+{
+private:
+	int id;
+	char *username;
+public:
+	Student();
+	Student(int id, char *pname);
+	Student(const Student &s); 
+	Student &operator = (const Student& s); 
+	~Student();
+};
